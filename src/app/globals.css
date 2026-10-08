@@ -1,0 +1,798 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Design tokens. Raw values on :root; @theme maps them to utilities
+   (bg-bg, text-fg-2, border-line, text-blue-2, font-mono, …).
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --c-bg: #020713;
+  --c-bg-2: #050c1f;
+  --c-surface: #071027;
+  --c-line: rgb(122 150 255 / 0.12);
+  --c-line-2: rgb(122 160 255 / 0.24);
+  --c-fg: #eaf2fd;
+  --c-fg-2: #a8b6cf;
+  --c-fg-3: #7d8ca8;
+  --c-blue: #2f7cf6;
+  --c-blue-2: #5b9dff;
+  --c-cyan: #38c8ea;
+  --c-green: #3dd68c;
+  --c-amber: #f5b544;
+  --c-red: #f0626b;
+
+  --f-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --e-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --nav-h: 5.5rem;
+}
+
+html[lang="ar"] {
+  --f-sans: var(--font-plex-arabic), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-bg-2: var(--c-bg-2);
+  --color-surface: var(--c-surface);
+  --color-line: var(--c-line);
+  --color-line-2: var(--c-line-2);
+  --color-fg: var(--c-fg);
+  --color-fg-2: var(--c-fg-2);
+  --color-fg-3: var(--c-fg-3);
+  --color-blue: var(--c-blue);
+  --color-blue-2: var(--c-blue-2);
+  --color-cyan: var(--c-cyan);
+  --color-green: var(--c-green);
+  --color-amber: var(--c-amber);
+  --color-red: var(--c-red);
+
+  --font-sans: var(--f-sans);
+  --font-mono: var(--f-mono);
+
+  --ease-out-expo: var(--e-out);
+}
+
+@layer base {
+  html {
+    background: var(--c-bg);
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-h) + 1rem);
+  }
+
+  body {
+    min-height: 100dvh;
+    overflow-x: clip;
+    background: var(--c-bg);
+    color: var(--c-fg);
+    font-family: var(--f-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: rgb(91 157 255 / 0.35);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--c-blue-2);
+    outline-offset: 3px;
+  }
+
+  button,
+  select,
+  [role="tab"],
+  [role="radio"] {
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  /* ── Type ─────────────────────────────────────────────────── */
+  .h-hero {
+    font-size: clamp(2.75rem, 1.35rem + 4.7vw, 5rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.048em;
+  }
+
+  .h-section {
+    font-size: clamp(2.125rem, 1.3rem + 2.6vw, 3.25rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+  }
+
+  .h-card {
+    font-size: 1.1875rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .h-feature {
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+  }
+
+  .lede {
+    font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+    line-height: 1.6;
+    letter-spacing: -0.011em;
+    color: var(--c-fg-2);
+  }
+
+  /* Headline fill: bright at the top, cooling toward the baseline. */
+  .text-grad,
+  .text-grad .w {
+    background-image: linear-gradient(180deg, #ffffff 25%, #b7c5e2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* The logo's cyan-to-blue, for the one word that matters. */
+  .text-brand,
+  .text-brand .w {
+    background-image: linear-gradient(95deg, #6edcf6 0%, #5b9dff 50%, #3a73f2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .data {
+    font-family: var(--f-mono);
+  }
+
+  /* ── Liquid glass ─────────────────────────────────────────────
+     Translucent and blurred, with a rim that catches light and a
+     specular highlight that follows the pointer (--mx / --my). */
+  .glass {
+    position: relative;
+    isolation: isolate;
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.025));
+    -webkit-backdrop-filter: blur(18px) saturate(170%);
+    backdrop-filter: blur(18px) saturate(170%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.2),
+      inset 0 -1px 1px rgb(255 255 255 / 0.04),
+      0 14px 34px -16px rgb(0 0 0 / 0.75);
+  }
+
+  .glass::before,
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(140deg, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.08) 30%, rgb(255 255 255 / 0.03) 62%, rgb(170 205 255 / 0.32));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box exclude,
+      linear-gradient(#000 0 0);
+    pointer-events: none;
+  }
+
+  .glass::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(14rem circle at var(--mx, 30%) var(--my, -40%), rgb(255 255 255 / 0.13), transparent 55%);
+    pointer-events: none;
+  }
+
+  .glass-strong {
+    background: linear-gradient(180deg, rgb(20 32 66 / 0.72), rgb(8 14 34 / 0.62));
+  }
+
+  /* Larger panels: same rim and light, no blur (cheap to scroll). */
+  .card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.055), rgb(255 255 255 / 0.012));
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.1),
+      0 30px 60px -36px rgb(0 0 0 / 0.85);
+  }
+
+  .card::before {
+    background: linear-gradient(160deg, rgb(255 255 255 / 0.28), rgb(255 255 255 / 0.06) 30%, rgb(255 255 255 / 0.02) 65%, rgb(140 180 255 / 0.18));
+  }
+
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+    background: radial-gradient(26rem circle at var(--mx, 50%) var(--my, 0%), rgb(110 170 255 / 0.14), transparent 45%);
+    transition: opacity 0.4s var(--e-out);
+    pointer-events: none;
+  }
+
+  .card:hover::after {
+    opacity: 1;
+  }
+
+  .card-solid {
+    background: linear-gradient(180deg, #0d1a3c, #060c22);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 1.875rem;
+    padding-inline: 0.875rem;
+    border-radius: 999px;
+    color: #dbe6fb;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .icon-tile {
+    position: relative;
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.95rem;
+    background: linear-gradient(180deg, #2a4a9c 0%, #10204f 55%, #0a1638 100%);
+    color: #a9d1ff;
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.32),
+      inset 0 -10px 18px rgb(4 10 30 / 0.5),
+      0 0 0 1px rgb(140 180 255 / 0.22),
+      0 14px 28px -12px rgb(47 124 246 / 0.8);
+  }
+
+  .icon-tile svg {
+    filter: drop-shadow(0 0 7px rgb(110 180 255 / 0.65));
+  }
+
+  .rule-glow {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(122 160 255 / 0.3), transparent);
+  }
+
+  /* Glass form fields */
+  .field {
+    width: 100%;
+    height: 3rem;
+    padding-inline: 0.875rem;
+    border-radius: 0.875rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    background: rgb(255 255 255 / 0.04);
+    color: var(--c-fg);
+    font: inherit;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05);
+    transition:
+      border-color 0.2s var(--e-out),
+      box-shadow 0.25s var(--e-out),
+      background-color 0.2s;
+  }
+
+  .field::placeholder {
+    color: #66758f;
+  }
+
+  .field:hover {
+    border-color: rgb(255 255 255 / 0.18);
+  }
+
+  .field:focus {
+    outline: none;
+    border-color: var(--c-blue-2);
+    background: rgb(91 157 255 / 0.06);
+    box-shadow:
+      0 0 0 4px rgb(91 157 255 / 0.18),
+      0 0 24px -4px rgb(91 157 255 / 0.5);
+  }
+
+  .field[aria-invalid="true"] {
+    border-color: #f0a35b;
+  }
+
+  /* Glow ripple added on press by the effects script. */
+  [data-ripple] {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .ripple {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: calc(var(--r) * 2);
+    height: calc(var(--r) * 2);
+    translate: -50% -50%;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgb(255 255 255 / 0.65) 0%, rgb(140 220 255 / 0.42) 26%, rgb(91 157 255 / 0.16) 52%, rgb(91 157 255 / 0) 70%);
+    mix-blend-mode: screen;
+    animation: ripple 0.9s var(--e-out) forwards;
+  }
+
+  /* Primary button sheen: a wet highlight across the top half. */
+  .btn-sheen::before {
+    content: "";
+    position: absolute;
+    inset: 1px 1px 52% 1px;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.32), rgb(255 255 255 / 0));
+    pointer-events: none;
+  }
+
+  /* ── Atmosphere ───────────────────────────────────────────── */
+  .hero-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgb(160 190 255 / 0.15) 1px, transparent 1.2px);
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(65% 50% at 50% 30%, #000 10%, transparent 75%);
+    mask-image: radial-gradient(65% 50% at 50% 30%, #000 10%, transparent 75%);
+  }
+
+  .hero-beam {
+    position: absolute;
+    left: 50%;
+    top: -18rem;
+    width: 72rem;
+    height: 42rem;
+    translate: -50% 0;
+    background: radial-gradient(50% 50% at 50% 50%, rgb(47 124 246 / 0.32), transparent 72%);
+  }
+
+
+  /* Hero layout: the icon's centre lines up with the data streams. */
+  .hero {
+    --hero-pt: calc(var(--nav-h) + 1.5rem);
+  }
+
+  @media (min-width: 40rem) {
+    .hero {
+      --hero-pt: calc(var(--nav-h) + 2.5rem);
+    }
+  }
+
+  .hero-streams {
+    top: calc(var(--hero-pt) - 100px);
+    z-index: -1;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
+  }
+
+  .stream {
+    stroke: rgb(120 170 255 / 0.2);
+  }
+
+  .stream-pad {
+    stroke: rgb(120 170 255 / 0.35);
+    fill: var(--c-bg);
+  }
+
+  .stream-pulse {
+    stroke: var(--c-cyan);
+    stroke-dasharray: 0.09 1;
+    stroke-dashoffset: 0.09;
+    opacity: 0;
+    filter: drop-shadow(0 0 4px rgb(56 200 234 / 0.95));
+  }
+
+  /* The AB'CORE app icon: glass tile, soft glow, a glint now and then. */
+  .app-icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 5rem;
+    height: 5rem;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background: linear-gradient(180deg, rgb(52 92 196 / 0.55), rgb(10 22 56 / 0.85));
+    -webkit-backdrop-filter: blur(14px) saturate(170%);
+    backdrop-filter: blur(14px) saturate(170%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.4),
+      inset 0 0 0 1px rgb(150 195 255 / 0.28),
+      inset 0 -12px 22px rgb(4 10 30 / 0.45),
+      0 0 44px rgb(56 200 234 / 0.3),
+      0 22px 50px -14px rgb(47 124 246 / 0.8);
+  }
+
+  .app-icon::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: linear-gradient(115deg, transparent 42%, rgb(255 255 255 / 0.32) 50%, transparent 58%);
+    translate: -70% 0;
+    pointer-events: none;
+  }
+
+  /* A planet's edge: the dashboard rises out of this glow. */
+  .horizon {
+    position: absolute;
+    left: 50%;
+    width: max(220vw, 110rem);
+    aspect-ratio: 1;
+    translate: -50% 0;
+    border-radius: 50%;
+    background: var(--c-bg);
+    box-shadow:
+      0 -1px 0 rgb(150 195 255 / 0.7),
+      0 -24px 90px 6px rgb(47 124 246 / 0.55),
+      0 -90px 220px 40px rgb(56 200 234 / 0.18);
+  }
+
+  /* The footer's big, faint logo, fading as it sinks into the page's edge. */
+  .footer-mark {
+    margin-bottom: -1.5rem;
+    opacity: 0.12;
+    pointer-events: none;
+    user-select: none;
+    -webkit-mask-image: linear-gradient(180deg, #000 20%, transparent 95%);
+    mask-image: linear-gradient(180deg, #000 20%, transparent 95%);
+  }
+
+  /* ── Marquee ──────────────────────────────────────────────── */
+  .marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--speed, 40s) linear infinite;
+  }
+
+  .marquee-group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: var(--gap, 3rem);
+    padding-inline-end: var(--gap, 3rem);
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  [dir="rtl"] .marquee-track {
+    animation-name: marquee-rtl;
+  }
+
+  /* ── Route beams (How it works) ───────────────────────────── */
+  .beam-base {
+    stroke: rgb(150 185 255 / 0.2);
+  }
+
+  .beam {
+    stroke: var(--c-cyan);
+    stroke-dasharray: 0.2 1;
+    stroke-dashoffset: 0.2;
+    opacity: 0;
+    filter: drop-shadow(0 0 4px rgb(56 200 234 / 0.95));
+    transition: opacity 0.4s var(--e-out);
+  }
+
+  .beam[data-state="done"] {
+    opacity: 0.5;
+    stroke-dasharray: none;
+    filter: none;
+  }
+
+  .beam[data-state="active"] {
+    opacity: 1;
+    animation: beam 1.5s var(--e-out) infinite;
+  }
+
+  .progress-fill {
+    transform-origin: left center;
+    animation: progress linear both;
+  }
+
+  [dir="rtl"] .progress-fill {
+    transform-origin: right center;
+  }
+
+  /* ── Platform: cards that stack as you scroll ─────────────── */
+  @media (min-width: 64rem) {
+    .stack-card {
+      position: sticky;
+      top: calc(var(--nav-h) + 0.75rem + var(--i, 0) * 1.125rem);
+    }
+  }
+
+  .skip-link {
+    position: fixed;
+    inset-inline-start: 1rem;
+    top: -4rem;
+    z-index: 100;
+    border-radius: 0.75rem;
+    background: #fff;
+    color: var(--c-bg);
+    padding: 0.625rem 0.875rem;
+    font-weight: 500;
+    transition: top 0.2s var(--e-out);
+  }
+
+  .skip-link:focus {
+    top: 0.75rem;
+  }
+}
+
+/* Chromium can bend the backdrop through an SVG filter: true liquid glass. */
+.refract .glass-lens {
+  -webkit-backdrop-filter: url(#liquid-glass) blur(10px) saturate(180%);
+  backdrop-filter: url(#liquid-glass) blur(10px) saturate(180%);
+}
+
+/* ── First-visit intro ─────────────────────────────────────────
+   html.intro covers the page until the intro overlay takes over
+   (html.intro-live), keeps the navbar logo hidden for the hand-off,
+   and holds the hero's entrance until the intro has finished. */
+html.intro:not(.intro-live) body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--c-bg);
+}
+
+html.intro #nav-logo {
+  opacity: 0;
+}
+
+html.intro:not(.intro-leaving) :is(.hero-in, .hero-words .w) {
+  animation-play-state: paused;
+}
+
+/* ── Arabic typography ─────────────────────────────────────────
+   Letter-spacing breaks the joins between Arabic letters, so it is
+   removed everywhere (unlayered, so it beats every utility). */
+html[lang="ar"] body * {
+  letter-spacing: 0;
+}
+
+html[lang="ar"] :is(.h-hero, .h-section, .h-card, .h-feature) {
+  font-weight: 600;
+}
+
+html[lang="ar"] .h-hero {
+  line-height: 1.25;
+}
+
+html[lang="ar"] .h-section {
+  line-height: 1.3;
+}
+
+html[lang="ar"] .lede {
+  letter-spacing: 0;
+}
+
+html[lang="ar"] .data {
+  font-family: var(--f-sans);
+  letter-spacing: 0;
+}
+
+/* ── Motion ─────────────────────────────────────────────────── */
+@keyframes rise {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    translate: 0 18px;
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    translate: 0 0;
+  }
+}
+
+@keyframes ripple {
+  from {
+    scale: 0;
+    opacity: 1;
+  }
+  to {
+    scale: 1;
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  to { translate: -50% 0; }
+}
+
+@keyframes marquee-rtl {
+  to { translate: 50% 0; }
+}
+
+@keyframes beam {
+  from { stroke-dashoffset: 0.2; }
+  to { stroke-dashoffset: -1; }
+}
+
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes stream {
+  from { stroke-dashoffset: 0.09; }
+  to { stroke-dashoffset: -1; }
+}
+
+@keyframes float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -5px; }
+}
+
+@keyframes glint {
+  0%, 72% { translate: -70% 0; }
+  100% { translate: 70% 0; }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgb(61 214 140 / 0.55); }
+  70% { box-shadow: 0 0 0 9px rgb(61 214 140 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(61 214 140 / 0); }
+}
+
+
+.live-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: none;
+  border-radius: 999px;
+  background: var(--c-green);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .live-dot {
+    animation: pulse-ring 2.2s infinite;
+  }
+
+  .stream-pulse {
+    opacity: 1;
+    animation: stream var(--t, 4s) linear infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .app-icon-float {
+    animation: float 7s ease-in-out infinite;
+  }
+
+  .app-icon::after {
+    animation: glint 6s var(--e-out) 1.8s infinite;
+  }
+
+
+  /* Hero load sequence: words, then the rest, each with a short blur-in. */
+  .hero-in {
+    animation: rise 1s var(--e-out) both;
+    animation-delay: calc(var(--d, 0) * 1ms);
+  }
+
+  .hero-words .w {
+    display: inline-block;
+    animation: rise 1s var(--e-out) both;
+    animation-delay: calc(var(--i, 0) * 70ms + 120ms);
+  }
+
+  /* Scroll reveals. Hidden only while JS runs (html.js), so nothing is
+     lost without it. */
+  .js [data-reveal] {
+    opacity: 0;
+    filter: blur(10px);
+    translate: 0 18px;
+    transition:
+      opacity 0.9s var(--e-out),
+      filter 0.9s var(--e-out),
+      translate 0.9s var(--e-out);
+    transition-delay: calc(var(--d, 0) * 1ms);
+  }
+
+  .js [data-reveal][data-shown] {
+    opacity: 1;
+    filter: none;
+    translate: 0 0;
+  }
+
+  .js [data-words] .w {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(8px);
+    translate: 0 0.3em;
+    transition:
+      opacity 0.85s var(--e-out),
+      filter 0.85s var(--e-out),
+      translate 0.85s var(--e-out);
+    transition-delay: calc(var(--i, 0) * 45ms);
+  }
+
+  .js [data-words][data-shown] .w {
+    opacity: 1;
+    filter: none;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+
+  .beam[data-state="active"] {
+    animation: none;
+    stroke-dasharray: none;
+  }
+
+  .progress-fill {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: #0b1530;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --c-line: rgb(150 175 255 / 0.3);
+    --c-line-2: rgb(150 180 255 / 0.5);
+    --c-fg-2: #c7d2e6;
+    --c-fg-3: #a3b0c8;
+  }
+}
