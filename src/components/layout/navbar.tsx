@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { AnimatePresence, m } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { BrandLogo } from "@/components/brand/brand";
@@ -100,7 +99,8 @@ export function Navbar({ locale, t }: { locale: Locale; t: Dictionary["nav"] }) 
           </nav>
 
           <div className="ms-auto flex items-center gap-1.5 lg:ms-0">
-            <Link
+            {/* A full page load: switching language swaps the whole document (lang, dir, fonts). */}
+            <a
               href={`/${otherLocale}`}
               hrefLang={otherLocale}
               lang={otherLocale}
@@ -109,7 +109,7 @@ export function Navbar({ locale, t }: { locale: Locale; t: Dictionary["nav"] }) 
               className="grid h-9 place-items-center rounded-full px-3.5 text-[0.8125rem] font-medium text-fg-2 transition-colors duration-200 hover:bg-white/[0.07] hover:text-fg"
             >
               {t.switchLabel}
-            </Link>
+            </a>
             <a href={SITE.loginUrl} className="hidden rounded-full px-3 py-2 text-sm text-fg-2 transition-colors duration-200 hover:text-fg lg:inline">
               {t.login}
             </a>
