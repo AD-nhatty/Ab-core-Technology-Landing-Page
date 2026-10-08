@@ -1,10 +1,10 @@
 import { Check } from "lucide-react";
 import type { CSSProperties } from "react";
-import { BrandMark } from "../brand/brand";
-import { ButtonLink } from "../ui/button";
-import { Words } from "../ui/words";
-import type { Locale } from "../../i18n/config";
-import type { Dictionary } from "../../i18n/dictionaries/en";
+import { BrandMark } from "@/components/brand/brand";
+import { ButtonLink } from "@/components/ui/button";
+import { Words } from "@/components/ui/words";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries/en";
 import { HeroBadge } from "./hero-badge";
 import { HeroDashboard } from "./hero-dashboard";
 import { HeroStreams } from "./hero-streams";

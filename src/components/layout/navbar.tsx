@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { AnimatePresence, m } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { BrandLogo } from "../brand/brand";
-import { ButtonLink } from "../ui/button";
-import type { Locale } from "../../i18n/config";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { cn } from "../../lib/cn";
-import { SITE } from "../../lib/site";
+import { BrandLogo } from "@/components/brand/brand";
+import { ButtonLink } from "@/components/ui/button";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { cn } from "@/lib/cn";
+import { SITE } from "@/lib/site";
 
 const GLIDE = { type: "spring", visualDuration: 0.38, bounce: 0.28 } as const;
 

@@ -1,8 +1,8 @@
 import { Users } from "lucide-react";
 import type { CSSProperties } from "react";
-import { SectionHeader } from "../ui/section-header";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { fill } from "../../lib/format";
+import { SectionHeader } from "@/components/ui/section-header";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { fill } from "@/lib/format";
 
 export function Process({ t }: { t: Dictionary["process"] }) {
   return (

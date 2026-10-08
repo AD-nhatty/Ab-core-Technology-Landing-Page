@@ -1,6 +1,6 @@
 import { Banknote, Fuel, HeartPulse, Landmark, ShoppingBag, Truck } from "lucide-react";
-import { Marquee } from "../ui/marquee";
-import type { Dictionary } from "../../i18n/dictionaries/en";
+import { Marquee } from "@/components/ui/marquee";
+import type { Dictionary } from "@/i18n/dictionaries/en";
 
 const ICONS = [Landmark, Banknote, HeartPulse, ShoppingBag, Fuel, Truck];
 

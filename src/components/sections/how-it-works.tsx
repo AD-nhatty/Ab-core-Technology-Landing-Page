@@ -1,5 +1,5 @@
-import { SectionHeader } from "../ui/section-header";
-import type { Dictionary } from "../../i18n/dictionaries/en";
+import { SectionHeader } from "@/components/ui/section-header";
+import type { Dictionary } from "@/i18n/dictionaries/en";
 import { RouteHub } from "./route-hub";
 
 export function HowItWorks({ t }: { t: Dictionary["how"] }) {

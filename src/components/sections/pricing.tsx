@@ -1,11 +1,11 @@
 import { Check, Star } from "lucide-react";
 import type { CSSProperties } from "react";
-import { ButtonLink } from "../ui/button";
-import { SectionHeader } from "../ui/section-header";
-import type { Locale } from "../../i18n/config";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { cn } from "../../lib/cn";
-import { rich } from "../../lib/format";
+import { ButtonLink } from "@/components/ui/button";
+import { SectionHeader } from "@/components/ui/section-header";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { cn } from "@/lib/cn";
+import { rich } from "@/lib/format";
 
 export function Pricing({ locale, t }: { locale: Locale; t: Dictionary["pricing"] }) {
   // "AED 199" in English, "199 درهم" in Arabic.

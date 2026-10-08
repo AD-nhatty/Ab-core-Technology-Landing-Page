@@ -1,5 +1,5 @@
-import { Marquee } from "../ui/marquee";
-import type { Dictionary } from "../../i18n/dictionaries/en";
+import { Marquee } from "@/components/ui/marquee";
+import type { Dictionary } from "@/i18n/dictionaries/en";
 
 export function Standards({ t }: { t: Dictionary["standards"] }) {
   return (

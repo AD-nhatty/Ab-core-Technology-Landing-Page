@@ -1,5 +1,5 @@
-import type { Locale } from "../../i18n/config";
-import { SITE } from "../../lib/site";
+import type { Locale } from "@/i18n/config";
+import { SITE } from "@/lib/site";
 
 /** Organization structured data for search engines. */
 export function JsonLd({ locale, description }: { locale: Locale; description: string }) {

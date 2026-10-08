@@ -1,7 +1,7 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import { Words } from "../ui/words";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { SITE } from "../../lib/site";
+import { Words } from "@/components/ui/words";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { SITE } from "@/lib/site";
 import { DemoForm } from "./demo-form";
 
 export function Contact({ t }: { t: Dictionary["contact"] }) {

@@ -3,11 +3,11 @@
 import { Bell, FileText, LayoutDashboard, Lock, Network, Plug, Plus, Receipt, Search, Settings, ShieldCheck } from "lucide-react";
 import { AnimatePresence, m, useInView, useScroll, useTransform } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { BrandLogo } from "../brand/brand";
-import { Chip, type ChipTone } from "../ui/chip";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { cn } from "../../lib/cn";
-import { usePrefersReducedMotion } from "../../lib/hooks";
+import { BrandLogo } from "@/components/brand/brand";
+import { Chip, type ChipTone } from "@/components/ui/chip";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { cn } from "@/lib/cn";
+import { usePrefersReducedMotion } from "@/lib/hooks";
 
 /* An example AB'CORE workspace. All figures are illustrative. */
 

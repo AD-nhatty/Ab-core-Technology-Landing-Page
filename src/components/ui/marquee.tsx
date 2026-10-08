@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import { cn } from "../../lib/cn";
+import { cn } from "@/lib/cn";
 
 /** Endless horizontal scroll. The second copy is hidden from assistive tech. */
 export function Marquee({ children, speed = 40, gap = "3rem", className }: { children: ReactNode; speed?: number; gap?: string; className?: string }) {

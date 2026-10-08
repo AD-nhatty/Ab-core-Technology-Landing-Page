@@ -1,8 +1,8 @@
 import { CircleCheck } from "lucide-react";
 import type { CSSProperties } from "react";
-import { SectionHeader } from "../ui/section-header";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { cn } from "../../lib/cn";
+import { SectionHeader } from "@/components/ui/section-header";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { cn } from "@/lib/cn";
 import { AuditPanel, ErpPanel, InvoicePanel, MatchPanel, VatPanel } from "./platform-panels";
 
 /** Five module cards that stack on top of each other as you scroll (desktop). */

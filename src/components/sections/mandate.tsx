@@ -1,6 +1,6 @@
-import { SectionHeader } from "../ui/section-header";
-import type { Locale } from "../../i18n/config";
-import type { Dictionary } from "../../i18n/dictionaries/en";
+import { SectionHeader } from "@/components/ui/section-header";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries/en";
 import { MandateClock } from "./mandate-clock";
 
 export function Mandate({ locale, t }: { locale: Locale; t: Dictionary["mandate"] }) {

@@ -2,7 +2,7 @@
 
 import { animate, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { usePrefersReducedMotion } from "../../lib/hooks";
+import { usePrefersReducedMotion } from "@/lib/hooks";
 
 /** Counts up to `value` the first time it scrolls into view. The server renders the final number. */
 export function CountUp({ value, prefix = "", suffix = "", className }: { value: number; prefix?: string; suffix?: string; className?: string }) {

@@ -1,8 +1,8 @@
 import { CircleCheck, CircleX, FileX } from "lucide-react";
 import type { CSSProperties } from "react";
-import { BrandMark } from "../brand/brand";
-import { SectionHeader } from "../ui/section-header";
-import type { Dictionary } from "../../i18n/dictionaries/en";
+import { BrandMark } from "@/components/brand/brand";
+import { SectionHeader } from "@/components/ui/section-header";
+import type { Dictionary } from "@/i18n/dictionaries/en";
 
 export function Comparison({ t }: { t: Dictionary["compare"] }) {
   return (

@@ -2,12 +2,12 @@
 
 import { AnimatePresence, m } from "motion/react";
 import { Fragment, useMemo, useRef, useState, type KeyboardEvent } from "react";
-import { intlLocaleOf, type Locale } from "../../i18n/config";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { cn } from "../../lib/cn";
-import { fill, plural, rich } from "../../lib/format";
-import { useNow } from "../../lib/hooks";
-import { COHORT_DATES, COHORT_IDS, DAY_MS, TIMELINE, daysUntil, deadlineAt, utcDay, type Cohort } from "../../lib/mandate";
+import { intlLocaleOf, type Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { cn } from "@/lib/cn";
+import { fill, plural, rich } from "@/lib/format";
+import { useNow } from "@/lib/hooks";
+import { COHORT_DATES, COHORT_IDS, DAY_MS, TIMELINE, daysUntil, deadlineAt, utcDay, type Cohort } from "@/lib/mandate";
 
 type Copy = Dictionary["mandate"];
 type Relative = { text: string; past: boolean } | null;

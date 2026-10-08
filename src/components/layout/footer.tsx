@@ -1,6 +1,6 @@
-import { BrandLogo } from "../brand/brand";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { SITE } from "../../lib/site";
+import { BrandLogo } from "@/components/brand/brand";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { SITE } from "@/lib/site";
 
 export function Footer({ t }: { t: Dictionary["footer"] }) {
   return (

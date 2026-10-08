@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from "@/assets/brand/logo-reversed.png";
 import mark from "@/assets/brand/mark-reversed.png";
-import { cn } from "../../lib/cn";
+import { cn } from "@/lib/cn";
 
 /*
  * The official AB'CORE logo from abcore.ae, cut out of its white background.

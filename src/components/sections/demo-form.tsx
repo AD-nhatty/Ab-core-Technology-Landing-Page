@@ -2,11 +2,11 @@
 
 import { ChevronDown, CircleCheck } from "lucide-react";
 import { useState, useTransition, type ChangeEvent, type FormEvent, type ReactNode } from "react";
-import { requestDemo, type DemoResult } from "../../app/actions/request-demo";
-import { Button } from "../ui/button";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { cn } from "../../lib/cn";
-import { fill } from "../../lib/format";
+import { requestDemo, type DemoResult } from "@/app/actions/request-demo";
+import { Button } from "@/components/ui/button";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { cn } from "@/lib/cn";
+import { fill } from "@/lib/format";
 
 type Copy = Dictionary["contact"]["form"];
 type RequiredField = "name" | "company" | "email";

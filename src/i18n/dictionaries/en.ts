@@ -1,4 +1,4 @@
-import type { PluralForms } from "../../lib/format";
+import type { PluralForms } from "@/lib/format";
 
 /**
  * English copy. ar.ts must match this shape (it is typed as Dictionary).

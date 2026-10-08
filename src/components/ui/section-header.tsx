@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { Words } from "./words";
-import { cn } from "../../lib/cn";
+import { cn } from "@/lib/cn";
 
 type Props = { id: string; pill: string; title: string; intro?: string; className?: string };
 

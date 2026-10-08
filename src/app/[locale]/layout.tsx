@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic } from "next/font/google";
 import { notFound } from "next/navigation";
 import introLogo from "@/assets/brand/logo-reversed.webp";
-import { GlassFilters } from "../../components/glass-filters";
-import { MotionProvider } from "../../components/providers/motion-provider";
-import { directionOf, isLocale, locales } from "../../i18n/config";
-import { getDictionary } from "../../i18n/get-dictionary";
-import { SITE } from "../../lib/site";
+import { GlassFilters } from "@/components/glass-filters";
+import { MotionProvider } from "@/components/providers/motion-provider";
+import { directionOf, isLocale, locales } from "@/i18n/config";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { SITE } from "@/lib/site";
 import "../globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });

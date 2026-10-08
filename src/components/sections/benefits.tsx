@@ -1,7 +1,7 @@
 import { Gauge, Globe, Languages, MapPin, Plug, ShieldCheck } from "lucide-react";
 import type { CSSProperties } from "react";
-import { SectionHeader } from "../ui/section-header";
-import type { Dictionary } from "../../i18n/dictionaries/en";
+import { SectionHeader } from "@/components/ui/section-header";
+import type { Dictionary } from "@/i18n/dictionaries/en";
 
 const ICONS = [MapPin, Globe, Plug, ShieldCheck, Gauge, Languages];
 

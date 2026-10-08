@@ -1,9 +1,9 @@
 import { CircleCheck } from "lucide-react";
 import type { ReactNode } from "react";
-import { Chip } from "../ui/chip";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { cn } from "../../lib/cn";
-import { rich } from "../../lib/format";
+import { Chip } from "@/components/ui/chip";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { cn } from "@/lib/cn";
+import { rich } from "@/lib/format";
 
 /* Product views for the platform cards. The figures are example data. */
 

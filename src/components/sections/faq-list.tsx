@@ -2,7 +2,7 @@
 
 import { m } from "motion/react";
 import { useId, useState, type CSSProperties } from "react";
-import { cn } from "../../lib/cn";
+import { cn } from "@/lib/cn";
 
 const SETTLE = { type: "spring", visualDuration: 0.4, bounce: 0.18 } as const;
 

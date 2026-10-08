@@ -1,5 +1,5 @@
-import { SectionHeader } from "../ui/section-header";
-import type { Dictionary } from "../../i18n/dictionaries/en";
+import { SectionHeader } from "@/components/ui/section-header";
+import type { Dictionary } from "@/i18n/dictionaries/en";
 import { FaqList } from "./faq-list";
 
 export function Faq({ t }: { t: Dictionary["faq"] }) {

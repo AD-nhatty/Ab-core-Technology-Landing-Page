@@ -1,8 +1,8 @@
 import type { CSSProperties, ReactNode } from "react";
-import { CountUp } from "../ui/count-up";
-import { SectionHeader } from "../ui/section-header";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { cn } from "../../lib/cn";
+import { CountUp } from "@/components/ui/count-up";
+import { SectionHeader } from "@/components/ui/section-header";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { cn } from "@/lib/cn";
 
 const VOLUME = [22, 28, 26, 34, 38, 36, 46, 52, 50, 61, 68, 74, 82, 92];
 

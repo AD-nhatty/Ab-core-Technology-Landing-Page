@@ -3,10 +3,10 @@
 import { Building, Check, FileText, Landmark, Network } from "lucide-react";
 import { AnimatePresence, m, useInView } from "motion/react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { BrandMark } from "../brand/brand";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { cn } from "../../lib/cn";
-import { usePrefersReducedMotion } from "../../lib/hooks";
+import { BrandMark } from "@/components/brand/brand";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { cn } from "@/lib/cn";
+import { usePrefersReducedMotion } from "@/lib/hooks";
 
 type Copy = Dictionary["how"];
 type State = "idle" | "active" | "done";

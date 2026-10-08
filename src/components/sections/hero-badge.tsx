@@ -1,11 +1,11 @@
 "use client";
 
 import { ChevronRight } from "lucide-react";
-import { intlLocaleOf, type Locale } from "../../i18n/config";
-import type { Dictionary } from "../../i18n/dictionaries/en";
-import { plural } from "../../lib/format";
-import { useToday } from "../../lib/hooks";
-import { MILESTONES, daysUntil, nextMilestone, type MilestoneId } from "../../lib/mandate";
+import { intlLocaleOf, type Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries/en";
+import { plural } from "@/lib/format";
+import { useToday } from "@/lib/hooks";
+import { MILESTONES, daysUntil, nextMilestone, type MilestoneId } from "@/lib/mandate";
 
 /** Names the next mandate deadline and counts the days to it, so the hero never goes stale. */
 export function HeroBadge({ locale, t }: { locale: Locale; t: Dictionary["hero"] }) {
