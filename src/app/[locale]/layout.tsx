@@ -49,6 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   return {
     metadataBase,
+    robots: SITE.indexable ? undefined : { index: false, follow: false },
     title: meta.title,
     description: meta.description,
     applicationName: SITE.name,
